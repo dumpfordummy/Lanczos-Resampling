@@ -1,5 +1,4 @@
 #include "jpeg_cpu.h"
-#include "upscaler.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -7,17 +6,11 @@
 #include <limits>
 #include <filesystem> // Requires C++17
 #include <algorithm>
+#include "lanczos.h"
 
 // Namespace alias for filesystem
 namespace fs = std::filesystem;
 
-// Function to parse the upscale method from user input
-UpscaleMethod parseMethod(const std::string& method_str) {
-    if (method_str == "bicubic") return UpscaleMethod::Bicubic;
-    if (method_str == "lanczos") return UpscaleMethod::Lanczos;
-    if (method_str == "edi") return UpscaleMethod::EDI;
-    throw std::runtime_error("Unknown upscale method: " + method_str);
-}
 
 // Function to list JPEG files in the current directory
 std::vector<fs::path> list_jpeg_files(const fs::path& directory) {
@@ -136,21 +129,6 @@ int main() {
         }
     }
 
-    // Prompt for upscale method
-    while (true) {
-        std::cout << "Enter upscale method (bicubic, lanczos, edi): ";
-        std::getline(std::cin, method_str);
-
-        try {
-            // Attempt to parse the method to ensure it's valid
-            UpscaleMethod method = parseMethod(method_str);
-            break; // Valid method entered
-        }
-        catch (const std::exception& e) {
-            std::cerr << e.what() << "\nPlease enter a valid method.\n";
-        }
-    }
-
     // Initialize variables for image data
     std::vector<unsigned char> image_data;
     int width, height, channels;
@@ -169,20 +147,10 @@ int main() {
     int new_width = static_cast<int>(width * scale_factor);
     int new_height = static_cast<int>(height * scale_factor);
 
-    UpscaleMethod method;
-    try {
-        // Parse the upscale method
-        method = parseMethod(method_str);
-    }
-    catch (const std::exception& e) {
-        std::cerr << e.what() << "\n";
-        return 1;
-    }
-
     std::vector<unsigned char> upscaled_image;
     try {
         // Perform the upscaling
-        upscaled_image = Upscaler::upscale(image_data, width, height, channels, new_width, new_height, method);
+        upscaled_image = Lanczos::upscale(image_data, width, height, channels, new_width, new_height);
     }
     catch (const std::exception& e) {
         std::cerr << "Error during upscaling: " << e.what() << "\n";

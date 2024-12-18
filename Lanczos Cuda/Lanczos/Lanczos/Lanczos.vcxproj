@@ -131,7 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Lanczos.cpp" />
+    <ClCompile Include="Lanczos_arg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lanczos_resample.cuh" />

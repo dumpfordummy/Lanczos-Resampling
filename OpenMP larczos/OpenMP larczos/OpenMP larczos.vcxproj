@@ -129,19 +129,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bicubic.cpp" />
-    <ClCompile Include="edi.cpp" />
     <ClCompile Include="jpeg_cpu.cpp" />
     <ClCompile Include="lanczos.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="upscaler.cpp" />
+    <ClCompile Include="main_args.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bicubic.h" />
-    <ClInclude Include="edi.h" />
     <ClInclude Include="jpeg_cpu.h" />
     <ClInclude Include="lanczos.h" />
-    <ClInclude Include="upscaler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

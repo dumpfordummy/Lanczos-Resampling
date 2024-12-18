@@ -15,39 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bicubic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="edi.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="jpeg_cpu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lanczos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="upscaler.cpp">
+    <ClCompile Include="main_args.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bicubic.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="edi.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="jpeg_cpu.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="lanczos.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="upscaler.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

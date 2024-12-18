@@ -40,8 +40,7 @@ void linear_to_sRGB(cv::Mat& img) {
 int main() {
     std::string input_image_filename;
     std::string output_image_filename;
-    double scale_x;
-    double scale_y;
+    double scale;
 
     // Get the current working directory
     fs::path current_dir = fs::current_path();
@@ -76,20 +75,12 @@ int main() {
     // Construct the full path for the output image
     fs::path output_image_path = current_dir / output_image_filename;
 
-    // Prompt for scale_x
-    std::cout << "Enter the scaling factor for the x-axis (positive number): ";
-    while (!(std::cin >> scale_x) || scale_x <= 0) {
+    // Prompt for scale
+    std::cout << "Enter the scaling factor (positive number): ";
+    while (!(std::cin >> scale) || scale <= 0) {
         std::cerr << "Invalid input. Please enter a positive number for scale_x: ";
         std::cin.clear(); // Clear the error flag
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
-    }
-
-    // Prompt for scale_y
-    std::cout << "Enter the scaling factor for the y-axis (positive number): ";
-    while (!(std::cin >> scale_y) || scale_y <= 0) {
-        std::cerr << "Invalid input. Please enter a positive number for scale_y: ";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
 
     // Optional: Consume any remaining newline characters
@@ -108,8 +99,8 @@ int main() {
     int in_height = input_image.rows;
     int channels = input_image.channels();
 
-    int out_width = static_cast<int>(in_width * scale_x);
-    int out_height = static_cast<int>(in_height * scale_y);
+    int out_width = static_cast<int>(in_width * scale);
+    int out_height = static_cast<int>(in_height * scale);
 
     // Allocate output image
 
