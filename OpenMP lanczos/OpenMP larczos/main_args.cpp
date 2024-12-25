@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
     std::vector<unsigned char> upscaled_image;
     try {
         // Perform the upscaling
-        upscaled_image = Lanczos::upscale(image_data, width, height, channels, new_width, new_height);
+        upscaled_image = Lanczos::upscale(image_data, width, height, channels, new_width, new_height, 8);
     }
     catch (const std::exception& e) {
         std::cerr << "Error during upscaling: " << e.what() << "\n";

@@ -17,11 +17,6 @@ namespace {
         if (x > -a && x < a) return sinc(x) * sinc(x / a);
         return 0.0;
     }
-
-    size_t get_memory_usage() {
-        // This function provides approximate memory usage (platform-dependent implementation needed).
-        return 0; // Replace with platform-specific memory usage function if available.
-    }
 }
 
 namespace Lanczos {
